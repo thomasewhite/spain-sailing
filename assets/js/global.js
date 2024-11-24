@@ -32,9 +32,9 @@ $(document).ready(function () {
   });
 });
 
-// Subscribe response
+// Subscription response
 $(document).ready(function () {
-  $("#contact").on("submit", function (e) {
+  $("#discountForm").on("submit", function (e) {
     e.preventDefault();
 
     toggleSpinner();
@@ -43,7 +43,7 @@ $(document).ready(function () {
 
     $.ajax({
       type: "POST",
-      url: "assets/php/contact.php",
+      url: "assets/php/discount.php",
       data: formData,
       success: function (response) {
         toggleSpinner(response);
@@ -379,10 +379,6 @@ function map() {
   });
 }
 document.addEventListener("DOMContentLoaded", function () {
-  // Map
-  map();
-  dropdown();
-
   const hamburgerButton = document.getElementById("hamburgerButton");
   const hamburgerMenu = document.getElementById("hamburgerMenu");
   hamburgerButton.addEventListener("click", function () {
@@ -398,10 +394,12 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Popups
-  popupOverlay.addEventListener("click", function () {
-    popupToggle(false, null);
-  });
-  close.addEventListener("click", function () {
-    popupToggle(false, null);
-  });
+  if (popupOverlay != null) {
+    popupOverlay.addEventListener("click", function () {
+      popupToggle(false, null);
+    });
+    close.addEventListener("click", function () {
+      popupToggle(false, null);
+    });
+  }
 });

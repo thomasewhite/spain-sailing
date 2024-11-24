@@ -458,12 +458,94 @@ nav .hamburger i.active {
 }
 
 /* Booking table */
+
+@media screen and (max-width: 768px) {
+  .booking-table {
+    display: none;
+  }
+}
+
 .booking-table {
-  width: 100%;
+  width: 100vw;
+  padding: 20px 0;
+  margin: 0;
 }
 
 .booking-table table {
+  width: 80%;
   margin: 0 auto;
+  border-collapse: collapse;
+  background-color: #00355e;
+  color: white;
+}
+
+.booking-table td {
+  padding: 10px;
+  border: 1px solid white;
+}
+
+.booking-table tr:nth-child(n + 4) td:empty {
+  background-color: #555555;
+}
+
+.booking-table tr:nth-child(2n + 5) {
+  background-color: #00507a;
+}
+
+.booking-table tr:nth-child(2n + 6) {
+  background-color: #7fbbd1;
+  color: black;
+}
+
+/* Booking selector */
+.picker {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+  width: 100%;
+  padding: 40px;
+  background-color: #d3e8ef;
+}
+
+.picker form {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+}
+
+.picker form select,
+.picker form button {
+  border: none;
+  outline: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.picker .discount input,
+.picker .discount button {
+  border: none;
+  outline: none;
+  padding: 10px;
+}
+
+.picker #discountCheckContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.picker #discountCheckContainer input,
+.picker #discountCheckContainer label {
+  cursor: pointer;
+}
+
+.picker .discount.hidden {
+  display: none;
 }
 
 /* Trustpilot */
