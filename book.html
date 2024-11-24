@@ -191,20 +191,16 @@
     </section>
 
     <section class="picker">
-      <form>
-        <select>
+      <form id="pricePicker">
+        <select id="pricePickerDate">
           <option disabled selected>Date</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
         </select>
-        <select>
-          <option disabled selected>Configuration</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
+        <select id="pricePickerConfig">
+          <option disabled selected>Please select a tour date first</option>
         </select>
-        <label>Price: N/A</label>
+        <label id="priceDisplayer">Price: N/A</label>
       </form>
       <div id="discountCheckContainer">
         <input onchange="toggleDiscount()" id="discountCheck" type="checkbox" />

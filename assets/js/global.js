@@ -378,6 +378,61 @@ function map() {
     }
   });
 }
+
+// Booking page price selector
+
+const tours = [
+  {
+    date: "25th May 2025 -> 30th May 2025",
+    configs: [
+      "One person",
+      "Two persons",
+      "Up to 4 persons (whole boat)",
+      "5 persons (whole boat)",
+      "6 persons (whole boat)",
+    ],
+    prices: [1425, "945 each", 3700, 4100, 4500],
+  },
+  {
+    date: "1st June 2025 -> 20th June 2025",
+    configs: [
+      "Up to 4 persons (whole boat)",
+      "5 persons (whole boat)",
+      "6 persons (whole boat)",
+    ],
+    prices: [4090, 4570, 5050],
+  },
+];
+
+const pricePicker = document.querySelector("#pricePicker");
+
+function updatePrice(select) {
+  // Change configuration dropdown
+  if (select.id === "pricePickerDate") {
+    const selectedDate = parseInt(select.value);
+    const configs = tours[selectedDate].configs;
+
+    const pricePickerConfig = document.getElementById("pricePickerConfig");
+
+    pricePickerConfig.innerHTML =
+      "<option disabled selected>Configuration</option>";
+
+    configs.forEach((config, index) => {
+      const newOption = document.createElement("option");
+      newOption.value = index;
+      newOption.textContent = `${config}`;
+      pricePickerConfig.appendChild(newOption);
+    });
+  } else {
+    // Work out price
+    const selectedDate = document.getElementById("pricePickerDate").value;
+    const selectedConfig = document.getElementById("pricePickerConfig").value;
+    const price = tours[selectedDate].prices[selectedConfig];
+    document.querySelector("#priceDisplayer").innerText = "Price: £" + price;
+  }
+}
+
+// Loading page
 document.addEventListener("DOMContentLoaded", function () {
   const hamburgerButton = document.getElementById("hamburgerButton");
   const hamburgerMenu = document.getElementById("hamburgerMenu");
@@ -400,6 +455,24 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     close.addEventListener("click", function () {
       popupToggle(false, null);
+    });
+  }
+
+  // Price picker
+  if (pricePicker != null) {
+    // Add options for the date
+    const pricePickerDate = document.getElementById("pricePickerDate");
+    pricePickerDate.innerHTML = "<option disabled selected>Date:</option>";
+
+    for (let i = 0; i < tours.length; i++) {
+      const newOption = document.createElement("option");
+      newOption.value = i;
+      newOption.textContent = tours[i].date;
+      pricePickerDate.appendChild(newOption);
+    }
+    // Change price and configurations if something is changed
+    pricePicker.querySelectorAll("select").forEach((select) => {
+      select.addEventListener("change", () => updatePrice(select));
     });
   }
 });
