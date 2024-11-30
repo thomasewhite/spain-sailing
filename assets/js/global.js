@@ -3,6 +3,7 @@ const popupContainer = document.querySelector(".popups");
 const popupOverlay = document.querySelector(".overlay");
 const popup = document.querySelector(".popup");
 const close = document.querySelector(".close");
+var discount = undefined;
 
 async function toggleSpinner(response) {
   await document.querySelector(".spinner-container").classList.toggle("active");
@@ -32,7 +33,7 @@ $(document).ready(function () {
   });
 });
 
-// Subscription response
+// Discount response
 $(document).ready(function () {
   $("#discountForm").on("submit", function (e) {
     e.preventDefault();
@@ -46,7 +47,8 @@ $(document).ready(function () {
       url: "assets/php/discount.php",
       data: formData,
       success: function (response) {
-        toggleSpinner(response);
+        discount = response;
+        toggleSpinner();
       },
     });
   });
@@ -423,12 +425,22 @@ function updatePrice(select) {
       newOption.textContent = `${config}`;
       pricePickerConfig.appendChild(newOption);
     });
+    document.getElementById("priceDisplayer").innerText = "Price: ";
   } else {
     // Work out price
     const selectedDate = document.getElementById("pricePickerDate").value;
     const selectedConfig = document.getElementById("pricePickerConfig").value;
     const price = tours[selectedDate].prices[selectedConfig];
-    document.querySelector("#priceDisplayer").innerText = "Price: £" + price;
+    if (discount == 0) {
+      document.querySelector("#priceDisplayer").innerText = "Price: £" + price;
+    } else {
+      document.querySelector("#priceDisplayer").innerText =
+        "Price: £" +
+        price * (1 - discount / 100) +
+        "<br>" +
+        discount +
+        "% discount";
+    }
   }
 }
 

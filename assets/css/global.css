@@ -842,7 +842,7 @@ footer div {
 
 .popup {
   width: 90%;
-  max-height: 100vh;
+  height: 95vh;
   padding: 40px;
   background-color: #00355e;
   color: white;
@@ -851,6 +851,8 @@ footer div {
   transform: scale(0);
   transition: transform 0.3s ease;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .popup #title,
