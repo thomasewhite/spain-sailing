@@ -3,10 +3,10 @@ const popupContainer = document.querySelector(".popups");
 const popupOverlay = document.querySelector(".overlay");
 const popup = document.querySelector(".popup");
 const close = document.querySelector(".close");
-var discount = undefined;
+var discount = 0;
 
 async function toggleSpinner(response) {
-  await document.querySelector(".spinner-container").classList.toggle("active");
+  document.querySelector(".spinner-container").classList.toggle("active");
   if (response != undefined) {
     alert(response);
     location.reload();
@@ -48,7 +48,13 @@ $(document).ready(function () {
       data: formData,
       success: function (response) {
         discount = response;
+        if (discount == 0) {
+          alert("Incorrect code!");
+        } else {
+          alert("Correct code!");
+        }
         toggleSpinner();
+        addPrice();
       },
     });
   });
@@ -428,19 +434,26 @@ function updatePrice(select) {
     document.getElementById("priceDisplayer").innerText = "Price: ";
   } else {
     // Work out price
-    const selectedDate = document.getElementById("pricePickerDate").value;
-    const selectedConfig = document.getElementById("pricePickerConfig").value;
-    const price = tours[selectedDate].prices[selectedConfig];
-    if (discount == 0) {
-      document.querySelector("#priceDisplayer").innerText = "Price: £" + price;
-    } else {
-      document.querySelector("#priceDisplayer").innerText =
-        "Price: £" +
-        price * (1 - discount / 100) +
-        "<br>" +
-        discount +
-        "% discount";
-    }
+    addPrice();
+  }
+}
+
+function addPrice() {
+  const selectedDate = document.getElementById("pricePickerDate").value;
+  const selectedConfig = document.getElementById("pricePickerConfig").value;
+  const price = tours[selectedDate].prices[selectedConfig];
+  if (discount == 0) {
+    document.querySelector("#priceDisplayer").innerText = "Price: £" + price;
+  } else {
+    document.querySelector("#priceDisplayer").innerHTML =
+      "Price: £" +
+      price * (1 - discount / 100) +
+      "<br>" +
+      discount +
+      "% discount";
+    // Remove discount bit
+    document.getElementById("discountForm").classList.add("hidden");
+    document.getElementById("discountCheckContainer").style.display = "none";
   }
 }
 
