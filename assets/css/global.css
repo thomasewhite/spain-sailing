@@ -296,7 +296,7 @@ nav .hamburger i.active {
   }
 }
 
-@media (min-width: 600px) and (max-width: 768px) {
+@media (min-width: 600px) and (max-width: 1200px) {
   .info-tiles {
     grid-template-columns: repeat(2, 1fr); /* 2 columns for small tablets */
   }
@@ -310,13 +310,14 @@ nav .hamburger i.active {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 40px;
+  align-items: center;
   background: #d3e8ef;
 }
 
 .quotes em {
   font-weight: 800;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
   .quotes {
     display: none;
   }
@@ -517,6 +518,12 @@ nav .hamburger i.active {
   align-items: center;
 }
 
+@media screen and (max-width: 600px) {
+  .picker form {
+    flex-direction: column;
+  }
+}
+
 .picker form select,
 .picker form button {
   border: none;
@@ -552,7 +559,7 @@ nav .hamburger i.active {
 
 .trustpilot {
   width: fit-content;
-  margin: 0 auto;
+  margin: 10px auto;
   padding: 10px;
   background: #fff;
   color: #000;
@@ -592,10 +599,25 @@ nav .hamburger i.active {
 }
 
 .subscribe form {
-  display: inline-flex; /* Ensures the input and button are in a line */
+  display: inline-flex;
   padding: 0;
-  margin: 5px auto; /* Centers the form */
-  border: 0; /* Removes the border */
+  margin: 5px auto;
+  border: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .subscribe form {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+  .subscribe input {
+    width: 300px;
+  }
+  .subscribe button {
+    width: 150px;
+  }
 }
 
 .subscribe input,
@@ -619,7 +641,6 @@ nav .hamburger i.active {
   cursor: pointer;
 }
 
-/* Optional: Adjust h2 and h3 for better layout */
 .subscribe h2,
 .subscribe h3 {
   margin: 0;
