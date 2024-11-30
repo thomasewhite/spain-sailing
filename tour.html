@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="assets/css/global.css" />
     <!--LeafletJS-->
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
     />
+    <link rel="stylesheet" href="assets/css/global.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Spain Sailing" />
+    <link rel="canonical" href="https://www.spain-sailing.com" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <meta
       name="description"
       content="Sailing tours of Galicia's Rias Baixas for up to 6 guests on our yacht. Spain's Galicia is just above Portugal and is a wonderful place for sailing and exploring. We are providing a series of 12 tours through summer of 2025, taking in Baiona, the Cies Islands, and our home marina of Combarro."
     />
-    <title>The Tour | Spain Sailing</title>
+    <title>Sailing Holidays - Rias Baixas sailing adventures | The Tour</title>
   </head>
   <body>
     <nav>
@@ -26,13 +29,15 @@
         </div>
       </div>
       <div class="items">
-        <div class="item" onclick="window.location.href = 'index.html'">
+        <div onclick="window.location.href = 'index.html'" class="item">
           Home
         </div>
-        <div class="item" onclick="window.location.href = 'tour.html'">
+        <div onclick="window.location.href = 'tour.html'" class="item">
           The Tour
         </div>
-        <div class="item">Dates and Booking</div>
+        <div onclick="window.location.href = 'book.html'" class="item">
+          Dates and Booking
+        </div>
         <div onclick="window.location.href = 'contact.html'" class="item">
           Contact Us
         </div>
@@ -42,10 +47,16 @@
       </div>
     </nav>
     <div id="hamburgerMenu" class="hamburger-menu">
-      <div class="item" onclick="window.location.href = 'index.html'">Home</div>
-      <div class="item">The Tour</div>
-      <div class="item">Dates and Booking</div>
-      <div class="item">Contact Us</div>
+      <div onclick="window.location.href = 'index.html'" class="item">Home</div>
+      <div onclick="window.location.href = 'tour.html'" class="item">
+        The Tour
+      </div>
+      <div onclick="window.location.href = 'book.html'" class="item">
+        Dates and Booking
+      </div>
+      <div onclick="window.location.href = 'contact.html'" class="item">
+        Contact Us
+      </div>
     </div>
     <section class="hero">
       <img class="hero-image" src="assets/images/hero_home.webp" />
