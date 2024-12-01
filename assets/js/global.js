@@ -489,10 +489,110 @@ const tours = [
       "5 persons (whole boat)",
       "6 persons (whole boat)",
     ],
-    prices: [1425, "945 each", 3700, 4100, 4500],
+    prices: [1425, 1890, 3700, 4100, 4500],
   },
   {
-    date: "1st June 2025 -> 20th June 2025",
+    date: "1st June 2025 -> 7th June 2025",
+    configs: [
+      "Up to 4 persons (whole boat)",
+      "5 persons (whole boat)",
+      "6 persons (whole boat)",
+    ],
+    prices: [4090, 4570, 5050],
+  },
+  {
+    date: "15th June 2025 -> 20th June 2025",
+    configs: [
+      "One person",
+      "Two persons",
+      "Up to 4 persons (whole boat)",
+      "5 persons (whole boat)",
+      "6 persons (whole boat)",
+    ],
+    prices: [1475, 1950, 3800, 4200, 4600],
+  },
+  {
+    date: "22nd June 2025 -> 28th June 2025",
+    configs: [
+      "Up to 4 persons (whole boat)",
+      "5 persons (whole boat)",
+      "6 persons (whole boat)",
+    ],
+    prices: [4180, 4660, 5140],
+  },
+  {
+    date: "6th July 2025 -> 11th July 2025",
+    configs: [
+      "One person",
+      "Two persons",
+      "Up to 4 persons (whole boat)",
+      "5 persons (whole boat)",
+      "6 persons (whole boat)",
+    ],
+    prices: [1525, 2070, 4100, 4500, 4900],
+  },
+  {
+    date: "13th July 2025 -> 19th July 2025",
+    configs: [
+      "Up to 4 persons (whole boat)",
+      "5 persons (whole boat)",
+      "6 persons (whole boat)",
+    ],
+    prices: [4510, 4990, 5470],
+  },
+  {
+    date: "27th July 2025 -> 1st August 2025",
+    configs: [
+      "One person",
+      "Two persons",
+      "Up to 4 persons (whole boat)",
+      "5 persons (whole boat)",
+      "6 persons (whole boat)",
+    ],
+    prices: [1555, 2110, 4100, 4500, 4900],
+  },
+  {
+    date: "3rd August 2025 -> 9th August 2025",
+    configs: [
+      "Up to 4 persons (whole boat)",
+      "5 persons (whole boat)",
+      "6 persons (whole boat)",
+    ],
+    prices: [4510, 4990, 5470],
+  },
+  {
+    date: "17th August 2025 -> 22nd August 2025",
+    configs: [
+      "One person",
+      "Two persons",
+      "Up to 4 persons (whole boat)",
+      "5 persons (whole boat)",
+      "6 persons (whole boat)",
+    ],
+    prices: [1555, 2110, 4100, 4500, 4900],
+  },
+  {
+    date: "24th August 2025 -> 30th August 2025",
+    configs: [
+      "Up to 4 persons (whole boat)",
+      "5 persons (whole boat)",
+      "6 persons (whole boat)",
+    ],
+    prices: [4510, 4990, 5470],
+  },
+  {
+    date: "7th September 2025 -> 12th September 2025",
+    configs: [
+      "One person",
+      "Two persons",
+      "Up to 4 persons (whole boat)",
+      "5 persons (whole boat)",
+      "6 persons (whole boat)",
+    ],
+    prices: [1475, 1950, 3800, 4200, 4600],
+  },
+  {
+    date: "14th September 2025 -> 20th September 2025",
     configs: [
       "Up to 4 persons (whole boat)",
       "5 persons (whole boat)",
@@ -547,6 +647,69 @@ function addPrice() {
   }
 }
 
+function updatePaypal(price) {
+  // Clear the previous button container
+  document.getElementById("paypal-button-container").innerHTML = "";
+
+  // Render new PayPal buttons
+  paypal
+    .Buttons({
+      createOrder: function (data, actions) {
+        return actions.order.create({
+          purchase_units: [
+            {
+              amount: {
+                value: price.toFixed(2), // Ensure proper formatting
+                currency_code: "GBP", // Replace with your preferred currency
+              },
+            },
+          ],
+        });
+      },
+      onApprove: function (data, actions) {
+        return actions.order.capture().then(function (details) {
+          alert("Transaction completed by " + details.payer.name.given_name);
+        });
+      },
+      onError: function (err) {
+        console.error("PayPal error:", err); // Log errors for debugging
+        alert("An error occurred with PayPal. Please try again.");
+      },
+    })
+    .render("#paypal-button-container");
+}
+
+function displayCheckout() {
+  if (document.getElementById("priceDisplayer").innerText.includes("£")) {
+    const selectedDate = document.getElementById("pricePickerDate").value;
+    const selectedConfig = document.getElementById("pricePickerConfig").value;
+    var price = tours[selectedDate].prices[selectedConfig];
+    if (discount != 0) {
+      price *= 1 - discount / 100;
+    }
+
+    document.getElementById("payInfo").innerHTML =
+      "<b>Tour:</b> " +
+      document.getElementById("pricePickerDate").options[
+        document.getElementById("pricePickerDate").selectedIndex
+      ].text +
+      "<br><b>Configuration:</b> " +
+      document.getElementById("pricePickerConfig").options[
+        document.getElementById("pricePickerConfig").selectedIndex
+      ].text +
+      "<br><b>Total price:</b> £" +
+      price +
+      "<br><b>Deposit (to be paid now):</b> £" +
+      (price * 0.25).toFixed(2);
+    updatePaypal(price.toFixed(2) * 0.25);
+
+    document.querySelector(".pay").classList.remove("hidden");
+    document.querySelector(".picker").style.display = "none";
+  } else {
+    alert("Please select a tour!");
+  }
+}
+
 // Loading page
 document.addEventListener("DOMContentLoaded", function () {
   const hamburgerButton = document.getElementById("hamburgerButton");
@@ -590,4 +753,7 @@ document.addEventListener("DOMContentLoaded", function () {
       select.addEventListener("change", () => updatePrice(select));
     });
   }
+
+  // Paypal
+  updatePaypal();
 });

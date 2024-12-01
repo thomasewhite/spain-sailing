@@ -938,3 +938,34 @@ footer div {
     transform: rotate(45deg);
   }
 }
+
+/* Paypal */
+
+.checkout-button {
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.pay {
+  max-width: 100%;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  background-color: #d3e8ef;
+}
+
+.pay.hidden {
+  display: none;
+}
+
+.pay #paypal-button-container {
+  z-index: 2;
+}
