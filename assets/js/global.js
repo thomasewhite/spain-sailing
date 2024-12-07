@@ -268,6 +268,22 @@ function setupCarousels() {
   carousels.forEach((carousel) => {
     carouselSetup(carousel.id);
   });
+  console.log("hello");
+}
+
+function createDots(container, itemCount, carouselId) {
+  // Create dots
+  const dotsContainer = container.querySelector(".dots");
+  dotsContainer.innerHTML = ""; // Clear any existing dots
+
+  for (let i = 0; i < itemCount; i++) {
+    const newDot = document.createElement("div");
+    newDot.id = `${carouselId}-dot-${i}`;
+    dotsContainer.appendChild(newDot);
+  }
+  if (document.querySelectorAll(".carousel-item").length != 0) {
+    activeDot(carouselId, itemCount);
+  }
 }
 
 function carouselSetup(carouselId) {
@@ -281,18 +297,7 @@ function carouselSetup(carouselId) {
     if (index === 2) item.classList.add("after");
   });
 
-  // Create dots
-  const dotsContainer = container.querySelector(".dots");
-  dotsContainer.innerHTML = ""; // Clear any existing dots
-
-  for (let i = 0; i < itemCount; i++) {
-    const newDot = document.createElement("div");
-    newDot.id = `${carouselId}-dot-${i}`;
-    dotsContainer.appendChild(newDot);
-  }
-  if (document.querySelectorAll(".carousel-item").length != 0) {
-    activeDot(carouselId, itemCount);
-  }
+  createDots(container, itemCount, carouselId);
 }
 
 function back(carouselId) {
@@ -708,6 +713,15 @@ function displayCheckout() {
 
 // Loading page
 document.addEventListener("DOMContentLoaded", function () {
+  if (window.location.href.includes("tour")) {
+    //Carousels tour page
+    const carouselContainer = document.querySelectorAll(".carousel-container");
+    carouselContainer.forEach((carouselContainer, index) => {
+      console.log(index);
+      carouselSetup("carousel-" + index);
+    });
+  }
+
   const hamburgerButton = document.getElementById("hamburgerButton");
   const hamburgerMenu = document.getElementById("hamburgerMenu");
   hamburgerButton.addEventListener("click", function () {
@@ -749,6 +763,8 @@ document.addEventListener("DOMContentLoaded", function () {
       select.addEventListener("change", () => updatePrice(select));
     });
   }
+
+
 
   // Paypal
   updatePaypal();
