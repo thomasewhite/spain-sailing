@@ -700,6 +700,11 @@ footer div {
   gap: 5px;
 }
 
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
 @media screen and (max-width: 768px) {
   footer {
     display: block;
