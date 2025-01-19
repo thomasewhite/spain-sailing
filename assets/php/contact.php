@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message = htmlspecialchars($_POST['message']);
 
     // Recipient, subject, and email body
-    $to = "webmasterspainsailing@gmail.com";
+    $to = "webmaster@spain-sailing.com";
     $subject = "Spain Sailing Inquiry";
 
     // Construct the email body as HTML

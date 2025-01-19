@@ -2,7 +2,7 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = htmlspecialchars($_POST['email']);
 
-    $to = "webmasterspainsailing@gmail.com";
+    $to = "webmaster@spain-sailing.com";
     $subject = "New subscription.";
     $body = "$email has subscribed!";
 

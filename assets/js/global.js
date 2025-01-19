@@ -144,8 +144,7 @@ const components = [
   },
   {
     title: "TOUR SUMMARY",
-    text: "Starting and finishing in the wonderful historic town of Combarro, our Rias Baixas summer tours are 5 or 6 nights long. On a tour full of contrasts we will visit beautiful Baiona, a relaxed, well-to-do and slightly old-fashioned resort. We will also spend nights at anchor off incredible beaches, bays and islands. Our favourites include Barra Beach with its beautiful sandy beach and walks around the three Cabo Home lighthouses and the Celtic settlements, the Cies Islands with the most stunning beaches and scenery, and the bay of Aldan, with its quiet villages and atmospheric walk through the 'enchanted forest'. The tour includes your accommodation onboard, all costs to do with the boat, breakfast and snacks, and your skipper, Tom. You are free to use the yacht's well-equipped galley and there are fantastic bars, restaurants and supermarkets throughout the Rias Baixas area. You will have to make your way to and from Combarro but we are happy to help. We can be a little bit flexible on dates and tour lengths if needed.",
-    images: [
+    text: "Starting and finishing in the wonderful historic town of Combarro, our Rias Baixas summer tours are 5 or 6 nights long. On a tour full of contrasts we will visit beautiful Baiona, a relaxed, well-to-do and slightly old-fashioned resort. We will also spend nights at anchor off incredible beaches, bays and islands. Our favourites include Barra Beach with its beautiful sandy beach and walks around the three Cabo Home lighthouses and the Celtic settlements, the Cies Islands with the most stunning beaches and scenery, and the bay of Aldan, with its quiet villages and atmospheric walk through the 'enchanted forest'. The tour includes your accommodation onboard, all costs to do with the boat, breakfast and snacks, and your skipper, Tom. You are free to use the yacht's well-equipped galley and there are fantastic bars, restaurants and supermarkets throughout the Rias Baixas area. You will have to make your way to and from Combarro but we are happy to help. We can be a little bit flexible on dates and tour lengths if needed.<br><a style='color: white;' href='tour.html'>Find out more...</a>", images: [
       "assets/images/rias_pop_view.webp",
       "assets/images/combarro_seafront.webp",
       "assets/images/baiona_from_the_castle.webp",
@@ -178,7 +177,7 @@ const components = [
   },
   {
     title: "ABOUT SPAIN SAILING",
-    text: "Spain Sailing is a partnership between brothers Tom and Ed White. Tom skippers all the tours on our yacht 'Marta' while Ed looks after the business side. Originally from land-locked Leicestershire, Tom now lives in Rias Baixas in Galicia, and speaks fluent Spanish. He has many years of experience teaching sailing and he knows the Rias Baixas area well. He is rated RYA Yachtmaster Instructor and has worked in sailing schools around the world. His sailing experiences include crossing the Atlantic single-handed, and competing in the Fastnet Race. Ed lives with his family in Lincolnshire, UK and his background is in business and engineering. He is relatively new to sailing but has sailed 1,000 miles from the Azores to Spain (in Marta). Ed's son Tom (a different Tom!) develops and looks after the website.",
+    text: "Spain Sailing is a partnership between brothers Tom and Ed White. Tom skippers all the tours on our yacht 'Marta' while Ed looks after the business side. Originally from land-locked Leicestershire, Tom now lives in Rias Baixas in Galicia, and speaks fluent Spanish. He has many years of experience teaching sailing and he knows the Rias Baixas area well. He is rated RYA Yachtmaster Instructor and has worked in sailing schools around the world. His sailing experiences include crossing the Atlantic single-handed, and competing in the Fastnet Race. Ed lives with his family in Lincolnshire, UK and his background is in business and engineering. He is relatively new to sailing but has sailed 1,000 miles from the Azores to Spain (in Marta). Ed's son Tom (a different Tom!) develops and looks after the website.<br><a style='color: white;' href='contact.html'>Contact us...</a>",
     images: [
       "assets/images/tom_yacht_combarro.webp",
       "assets/images/combarro_marina2.webp",
@@ -204,8 +203,8 @@ function popupToggle(open, index) {
   if (open) {
     // Change popup text and carousel
     // Text
-    title.innerText = components[index].title;
-    text.innerText = components[index].text;
+    title.innerHTML = components[index].title;
+    text.innerHTML = components[index].text;
 
     // Carousel images
     // First three
