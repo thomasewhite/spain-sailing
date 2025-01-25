@@ -490,6 +490,7 @@ const tours = [
       "6 persons (whole boat)",
     ],
     prices: [1425, 1890, 3700, 4100, 4500],
+    booked: true,
   },
   {
     date: "1st June 2025 -> 7th June 2025",
@@ -499,6 +500,7 @@ const tours = [
       "6 persons (whole boat)",
     ],
     prices: [4090, 4570, 5050],
+    booked: false,
   },
   {
     date: "15th June 2025 -> 20th June 2025",
@@ -510,6 +512,7 @@ const tours = [
       "6 persons (whole boat)",
     ],
     prices: [1475, 1950, 3800, 4200, 4600],
+    booked: false,
   },
   {
     date: "22nd June 2025 -> 28th June 2025",
@@ -519,6 +522,7 @@ const tours = [
       "6 persons (whole boat)",
     ],
     prices: [4180, 4660, 5140],
+    booked: false,
   },
   {
     date: "6th July 2025 -> 11th July 2025",
@@ -530,6 +534,7 @@ const tours = [
       "6 persons (whole boat)",
     ],
     prices: [1525, 2070, 4100, 4500, 4900],
+    booked: false,
   },
   {
     date: "13th July 2025 -> 19th July 2025",
@@ -539,6 +544,7 @@ const tours = [
       "6 persons (whole boat)",
     ],
     prices: [4510, 4990, 5470],
+    booked: false,
   },
   {
     date: "27th July 2025 -> 1st August 2025",
@@ -550,6 +556,7 @@ const tours = [
       "6 persons (whole boat)",
     ],
     prices: [1555, 2110, 4100, 4500, 4900],
+    booked: false,
   },
   {
     date: "3rd August 2025 -> 9th August 2025",
@@ -559,6 +566,7 @@ const tours = [
       "6 persons (whole boat)",
     ],
     prices: [4510, 4990, 5470],
+    booked: false,
   },
   {
     date: "17th August 2025 -> 22nd August 2025",
@@ -570,6 +578,7 @@ const tours = [
       "6 persons (whole boat)",
     ],
     prices: [1555, 2110, 4100, 4500, 4900],
+    booked: false,
   },
   {
     date: "24th August 2025 -> 30th August 2025",
@@ -579,6 +588,7 @@ const tours = [
       "6 persons (whole boat)",
     ],
     prices: [4510, 4990, 5470],
+    booked: false,
   },
   {
     date: "7th September 2025 -> 12th September 2025",
@@ -590,6 +600,7 @@ const tours = [
       "6 persons (whole boat)",
     ],
     prices: [1475, 1950, 3800, 4200, 4600],
+    booked: false,
   },
   {
     date: "14th September 2025 -> 20th September 2025",
@@ -599,6 +610,7 @@ const tours = [
       "6 persons (whole boat)",
     ],
     prices: [4090, 4570, 5050],
+    booked: false,
   },
 ];
 
@@ -755,6 +767,9 @@ document.addEventListener("DOMContentLoaded", function () {
       const newOption = document.createElement("option");
       newOption.value = i;
       newOption.textContent = tours[i].date;
+      if (tours[i].booked) {
+        newOption.disabled = true;
+      }
       pricePickerDate.appendChild(newOption);
     }
     // Change price and configurations if something is changed
