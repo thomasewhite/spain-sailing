@@ -500,7 +500,7 @@ const tours = [
       "6 persons (whole boat)",
     ],
     prices: [4090, 4570, 5050],
-    booked: false,
+    booked: true,
   },
   {
     date: "15th June 2025 -> 20th June 2025",
