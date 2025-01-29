@@ -205,6 +205,14 @@ nav .hamburger i.active {
   font-weight: 300;
 }
 
+.description strong {
+  display: block;
+  width: 70%;
+  margin: 0 auto;
+  padding: 10px;
+  font-weight: 600;
+}
+
 @media screen and (max-width: 600px) {
   .description p {
     width: 90%;
@@ -251,6 +259,83 @@ nav .hamburger i.active {
     width: 100%;
     height: fit-content;
     aspect-ratio: 1 / 1;
+  }
+}
+
+/*articles page*/
+#currentArticle {
+  width: 100%;
+  padding: 0 25%;
+}
+
+#currentArticle * {
+  padding: 10px 0;
+}
+
+#currentArticle img {
+  max-width: 70%;
+  margin: 0 15%;
+}
+
+#articlesTitle {
+  width: 100%;
+  text-align: center;
+  background-color: #d3e8ef;
+}
+
+#otherArticles {
+  width: 100%;
+  padding: 20px 15%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  background-color: #d3e8ef;
+}
+
+#otherArticles div {
+  width: 80%;
+  padding: 10px;
+  background-color: #00355e;
+  color: #fff;
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  #currentArticle {
+    width: 100%;
+    padding: 0 10%;
+  }
+  
+  #currentArticle * {
+    padding: 10px 0;
+  }
+  
+  #currentArticle img {
+    max-width: 90%;
+    margin: 0 5%;
+  }
+  
+  #articlesTitle {
+    width: 100%;
+    text-align: center;
+    background-color: #d3e8ef;
+  }
+  
+  #otherArticles {
+    width: 100%;
+    padding: 20px 5%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+    background-color: #d3e8ef;
+  }
+  
+  #otherArticles div {
+    width: 90%;
+    padding: 10px;
+    background-color: #00355e;
+    color: #fff;
+    cursor: pointer;
   }
 }
 
